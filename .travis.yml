@@ -6,4 +6,4 @@ before_install:
     - docker build -t flytaly/docker-react-tests -f Dockerfile.dev .
 
 script:
-    - docker run flytaly/docker-react-tests npm run test -- --coverage
+    - docker run flytaly/docker-react-tests npm run test -- --coverage --watchAll=false
