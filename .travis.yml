@@ -7,3 +7,16 @@ before_install:
 
 script:
     - docker run flytaly/docker-react-tests npm run test:ci -- --coverage --watchAll=false
+
+deploy:
+    provider: elasticbeanstalk
+    region: 'eu-west-1'
+    app: 'docker-react-tests'
+    env: 'DockerReactTests-env'
+    bucket_name: 'elasticbeanstalk-eu-west-1-379409741246'
+    bucket_path: 'docker-react-tests'
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+        secure: '$AWS_SECRET_KEY'
